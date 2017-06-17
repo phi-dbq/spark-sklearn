@@ -3,17 +3,17 @@
 val sparkVer = sys.props.getOrElse("spark.version", "2.1.1")
 val sparkBranch = sparkVer.substring(0, 3)
 val defaultScalaVer = sparkBranch match {
-  case "2.0" => "2.11.8"
-  case "2.1" => "2.11.8"
-  case "2.2" => "2.11.8"
+  case "2.0" => "2.11.11"
+  case "2.1" => "2.11.11"
+  case "2.2" => "2.11.11"
   case _ => throw new IllegalArgumentException(s"Unsupported Spark version: $sparkVer.")
 }
 val scalaVer = sys.props.getOrElse("scala.version", defaultScalaVer)
 val scalaMajorVersion = scalaVer.substring(0, scalaVer.indexOf(".", scalaVer.indexOf(".") + 1))
 
-scalaVersion := "2.11.11"
+scalaVersion := defaultScalaVer
 
-sparkVersion := "2.1.1"
+sparkVersion := sparkVer
 
 spName := "databricks/spark-sklearn"
 
